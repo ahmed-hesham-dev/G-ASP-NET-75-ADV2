@@ -20,6 +20,12 @@ namespace Assignment2_C_.classes
             return result;
 
         }
-
+        public void PrintReport(List<Product> products, Action<Product> printAction)
+        {
+            foreach (Product product in products)
+            {
+                printAction(product);   
+            }
+        }
     }
 }

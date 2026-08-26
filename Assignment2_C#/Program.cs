@@ -24,30 +24,44 @@ namespace Assignment2_C_
 
             ProductService service = new ProductService();
 
-            #region 
-            Console.WriteLine("--- Electronics ---");
-            List<Product> electronics = service.SearchProducts(catalog, p => p.Category == "Electronics");
-            foreach (var p in electronics)
-                Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
+            #region Task 1: All Electronics products
+            //Console.WriteLine("--- Electronics ---");
+            //List<Product> electronics = service.SearchProducts(catalog, p => p.Category == "Electronics");
+            //foreach (var p in electronics)
+            //    Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
 
             
-            Console.WriteLine("\n--- Under $50 ---");
-            List<Product> under50 = service.SearchProducts(catalog, p => p.Price < 50);
-            foreach (var p in under50)
-                Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
+            //Console.WriteLine("\n--- Under $50 ---");
+            //List<Product> under50 = service.SearchProducts(catalog, p => p.Price < 50);
+            //foreach (var p in under50)
+            //    Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
 
            
-            Console.WriteLine("\n--- In Stock ---");
-            List<Product> inStock = service.SearchProducts(catalog, p => p.Stock > 0);
-            foreach (var p in inStock)
-                Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
+            //Console.WriteLine("\n--- In Stock ---");
+            //List<Product> inStock = service.SearchProducts(catalog, p => p.Stock > 0);
+            //foreach (var p in inStock)
+            //    Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
 
-            Console.WriteLine("\n--- Clothing Under $100 ---");
-            List<Product> clothingUnder100 = service.SearchProducts(catalog, p => p.Category == "Clothing" && p.Price < 100);
-            foreach (var p in clothingUnder100)
-                Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
+            //Console.WriteLine("\n--- Clothing Under $100 ---");
+            //List<Product> clothingUnder100 = service.SearchProducts(catalog, p => p.Category == "Clothing" && p.Price < 100);
+            //foreach (var p in clothingUnder100)
+                //Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
 
             #endregion
+
+
+
+            #region Task 3.1: Print Report
+
+            // Scenario 1: Short Report
+            Console.WriteLine("--- Short Report ---");
+            service.PrintReport(catalog, p => Console.WriteLine($"{p.Name} - ${p.Price}"));
+
+            // Scenario 2: Detailed Report
+            Console.WriteLine("\n--- Detailed Report ---");
+            service.PrintReport(catalog, p => Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}"));
+            #endregion
+
         }
     }
 }
