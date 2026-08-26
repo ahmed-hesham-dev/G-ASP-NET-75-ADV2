@@ -61,6 +61,20 @@ namespace Assignment2_C_
             Console.WriteLine("\n--- Detailed Report ---");
             service.PrintReport(catalog, p => Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}"));
             #endregion
+            #region Task 3.2: Transform Products
+
+            // Scenario 3: Summary List
+            Console.WriteLine("--- Summary List ---");
+            List<string> summaries = service.TransformProducts(catalog, p => $"{p.Name} (${p.Price})");
+            foreach (var s in summaries)
+                Console.WriteLine(s);
+
+            // Scenario 4: Price Label
+            Console.WriteLine("\n--- Price Labels ---");
+            List<string> labels = service.TransformProducts(catalog, p => $"{p.Name}: {(p.Price > 100 ? "Expensive!" : "Affordable")}");
+            foreach (var l in labels)
+                Console.WriteLine(l);
+            #endregion
 
         }
     }

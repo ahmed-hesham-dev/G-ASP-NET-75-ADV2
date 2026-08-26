@@ -20,6 +20,15 @@ namespace Assignment2_C_.classes
             return result;
 
         }
+        public List<string> TransformProducts(List<Product> products, Func<Product, string> transform)
+        {
+            List<string> result = new List<string>();
+            foreach (Product product in products)
+            {
+                result.Add(transform(product));   
+            }
+            return result;
+        }
         public void PrintReport(List<Product> products, Action<Product> printAction)
         {
             foreach (Product product in products)
